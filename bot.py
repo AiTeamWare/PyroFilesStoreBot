@@ -7,14 +7,46 @@ from pyrogram import Client, filters
 from pyrogram.errors import UserNotParticipant
 from pyrogram.errors import FloodWait
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, Message
-from configs import Config
-from handlers.check_user_status import handle_user_status
-from handlers.force_sub_handler import handle_force_sub
-from handlers.broadcast_handlers import main_broadcast_handler
-from handlers.database import Database
+from bot import (
+    API_HASH,
+    APP_ID,
+    TG_BOT_TOKEN,
+    BOT_USERNAME,
+    DB_CHANNEL,
+    BOT_OWNER,
+    DBASE_URL,
+    UPDATES_CHANNEL,
+    LOG_CHANNEL,
+    BANNED_USERS,
+    FORWARD_AS_COPY,
+    BROADCAST_AS_COPY,
+    BANNED_CHAT_IDS,
+    COMMM_AND_PRE_FIX,
+    OTHER_USERS_CAN_SAVE_FILE,
+    ABOUT_BOT_TEXT,
+    ABOUT_DEV_TEXT,
+    HOME_TEXT,
+    AUTH_CHANNEL,
+    BAN_COMMAND,
+    UN_BAN_COMMAND,
+    START_COMMAND
+    DEFAULT_START_TEXT,
+    START_OTHER_USERS_TEXT,
+    ONLINE_CHECK_START_TEXT,
+    DELETED_MESSAGES_NOTIFICATION_TEXT,
+    DERP_USER_S_TEXT,
+    REASON_DE_LIMIT_ER,
+    IS_UN_BANED_MESSAGE_TEXT,
+    BOT_WS_BLOCKED_BY_USER,
+    LOG_FILE_ZZGEVC,
+    IS_BLACK_LIST_ED_MESSAGE_TEXT
+)
+from bot.sql.check_user_status import handle_user_status
+from bot.sql.force_sub_handler import handle_force_sub
+from bot.sql.broadcast_handlers import main_broadcast_handler
+from bot.sql.database import Database
 
-db = Database(Config.DATABASE_URL, Config.BOT_USERNAME)
-Bot = Client(Config.BOT_USERNAME, bot_token=Config.BOT_TOKEN, api_id=Config.API_ID, api_hash=Config.API_HASH)
+db = Database(DBASE_URL, BOT_USERNAME)
 
 
 @Bot.on_message(filters.private)
